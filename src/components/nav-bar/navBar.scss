@@ -1,0 +1,49 @@
+.navBar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 15px 20px;
+  border-bottom: 1px solid lightgrey;
+
+  .left {
+    flex: 65%;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+
+    span {
+      font-weight: bold;
+      font-size: 20px;
+      color: rgb(123, 190, 248);
+    }
+
+    .search {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      border-bottom: 2px solid black;
+      margin-left: auto;
+
+
+      input {
+        width: 400px;
+        border: none;
+      }
+
+    }
+  }
+
+  .right {
+    flex: 40%;
+    justify-content: flex-end;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+
+    .user {
+      span {
+        font-weight: bold;
+      }
+    }
+  }
+}
