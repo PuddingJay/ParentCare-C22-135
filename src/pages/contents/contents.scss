@@ -1,0 +1,12 @@
+.contents {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+
+  .content {
+    background-color: white;
+    border-radius: 5px;
+    padding: 20px;
+    margin: 0 80px;
+  }
+}

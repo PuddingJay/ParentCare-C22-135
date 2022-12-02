@@ -1,0 +1,22 @@
+// $themes: (
+//   light:(text-color:#0000,
+//     bg: white,
+//     logo: darkblue,
+//     bgSoft: #f6f3f3,
+//     textColorsoft:#555,
+//     border: lightgray,
+//   ),
+//   dark:(text-color: whitesmoke,
+//     bg: #222,
+//     logo: white,
+//     bgSoft: #333,
+//     textColorSoft: lightgrey,
+//     border: #444,
+//   ),
+// );
+
+// @mixin themify($themes) {
+//   @each $theme, $map in $themes {
+//     .theme-#{$theme}
+//   }
+// }

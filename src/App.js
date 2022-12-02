@@ -7,6 +7,7 @@ import RightBar from './components/right-bar/RightBar';
 import { createBrowserRouter, RouterProvider, Route, Outlet } from 'react-router-dom';
 import Home from './pages/home/Home';
 import Detail from './pages/detail/Detail';
+import "./style.scss"
 
 function App() {
 
@@ -14,9 +15,12 @@ function App() {
     return (
       <div>
         <NavBar />
-        <div>
+        <div style={{ display: 'flex' }}>
           <LeftBar />
-          <Outlet />
+          <div style={{ flex: 6 }}>
+            <Outlet />
+
+          </div>
           <RightBar />
         </div>
       </div>

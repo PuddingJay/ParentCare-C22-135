@@ -1,15 +1,18 @@
 .navBar {
   display: flex;
+  background-color: white;
   align-items: center;
   justify-content: space-between;
   padding: 15px 20px;
   border-bottom: 1px solid lightgrey;
+  position: sticky;
+  top: 0;
 
   .left {
     flex: 65%;
     display: flex;
     align-items: center;
-    gap: 10px;
+    gap: 30px;
 
     span {
       font-weight: bold;
