@@ -6,7 +6,7 @@ import img1 from '../../asset/mtwae.jpg';
 const RightBar = () => {
   return (
     <div className="list">
-      <h2>Berikut List Artikel untuk membantu</h2>
+      <p>Berikut List Artikel untuk membantu</p>
       <div className="rightBar">
         <div className="article__container">
           <a href="https://www.youtube.com/watch?v=FweHcYHkt9A" className="article">

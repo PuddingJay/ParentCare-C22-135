@@ -1,0 +1,38 @@
+.addContent {
+  margin-bottom: 20px;
+  background-color: white;
+
+  form {
+    display: flex;
+    flex-direction: column;
+    padding: 20px;
+    gap: 10px;
+    box-shadow: 0 0 1px grey;
+
+    input {
+      font-weight: lighter;
+      padding: 10px;
+    }
+
+    textarea {
+      padding: 10px;
+      font-weight: lighter;
+    }
+
+    button {
+      background-color: rgb(123, 190, 248);
+      color: white;
+      text-shadow: 0 0 8px black;
+      border: 1px solid black;
+      min-height: 44px;
+      min-width: 44px;
+      font-weight: bold;
+      font-size: 20px;
+    }
+
+    button:hover {
+      cursor: pointer;
+    }
+  }
+
+}
