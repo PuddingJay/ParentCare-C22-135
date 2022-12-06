@@ -1,8 +1,33 @@
 import React from 'react';
 import './login.scss';
 import { Link } from 'react-router-dom';
+import useInput from '../../hooks/useInput';
+import { login } from '../../utils/api';
 
-const Login = () => {
+
+const Login = ({ loginSuccess }) => {
+  const [email, onEmailChange] = useInput('');
+  const [password, onPasswordChange] = useInput('');
+
+  const onLogin = () => {
+    getUserDataLogin(
+      {
+        email: email,
+        password: password,
+      })
+  }
+
+  async function getUserDataLogin({ email, password }) {
+    const { error, data } = await login({ email, password });
+
+    if (!error) {
+      alert('Selamat Datang ☺');
+      loginSuccess(data);
+    } else {
+      alert('Belom daftar yak, daftar duluuu')
+    }
+  }
+
   return (
     <div className="login">
       <div className="card">
@@ -17,9 +42,9 @@ const Login = () => {
         <div className="right">
           <h1>Login</h1>
           <div>
-            <input type="text" placeholder="Username" />
-            <input type="password" placeholder="Password" />
-            <button>Masuk </button>
+            <input type="email" placeholder="Email" value={email} onChange={onEmailChange} />
+            <input type="password" placeholder="Password" value={password} onChange={onPasswordChange} />
+            <button onClick={onLogin}>Masuk </button>
           </div>
         </div>
       </div>

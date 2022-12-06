@@ -1,8 +1,39 @@
 import React from 'react';
 import './register.scss';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
+import useInput from '../../hooks/useInput';
+import { register } from '../../utils/api';
+
 
 const Register = () => {
+  const navigate = useNavigate();
+
+  const [name, onNameChange] = useInput('');
+  const [email, onEmailChange] = useInput('');
+  const [password, onPasswordChange] = useInput('');
+  const [verifPassword, onVerifPasswordChange] = useInput('');
+
+  const onRegister = () => {
+    if (password === verifPassword) {
+      getUserDataRegister(
+        {
+          name: name,
+          email: email,
+          password: password
+        })
+      alert('Berhasil Mendaftar');
+    } else {
+      alert('Password Harus Identik!');
+    }
+  }
+
+  async function getUserDataRegister(user) {
+    const { error } = await register(user);
+    if (!error) {
+      navigate('/');
+    }
+  }
+
   return (
     <div className="register">
       <div className="card">
@@ -17,11 +48,11 @@ const Register = () => {
         <div className="right">
           <h1>Register</h1>
           <div>
-            <input type="text" placeholder="Name" />
-            <input type="text" placeholder="Username" />
-            <input type="email" placeholder="email" />
-            <input type="password" placeholder="Password" />
-            <button>Masuk </button>
+            <input type="text" placeholder="Name" value={name} onChange={onNameChange} />
+            <input type="email" placeholder="email" value={email} onChange={onEmailChange} />
+            <input type="password" placeholder="Password" value={password} onChange={onPasswordChange} />
+            <input type="password" placeholder="Confirm Password" value={verifPassword} onChange={onVerifPasswordChange} />
+            <button onClick={onRegister}>Daftar </button>
           </div>
         </div>
       </div>
