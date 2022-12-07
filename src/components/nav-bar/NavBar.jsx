@@ -1,16 +1,15 @@
-import React from 'react';
-import './navBar.scss';
-import { Link } from 'react-router-dom';
-import { FaMoon/*, FaSun*/ } from 'react-icons/fa';
-import { FiHome, FiLogOut } from 'react-icons/fi';
-import { CgSearch } from 'react-icons/cg';
-import { BsPersonCircle } from 'react-icons/bs';
+import React from "react";
+import "./navBar.scss";
+import { Link } from "react-router-dom";
+import { FaMoon /*, FaSun*/ } from "react-icons/fa";
+import { FiHome, FiLogOut } from "react-icons/fi";
+import { CgSearch } from "react-icons/cg";
+import { BsPersonCircle } from "react-icons/bs";
 
-const NavBar = ({ logout }) => {
+const NavBar = ({ logout, name }) => {
   return (
     <div className="navBar">
-
-      <Link to='/' style={{ textDecoration: 'none' }}>
+      <Link to="/" style={{ textDecoration: "none" }}>
         <span className="appName">parentcare</span>
       </Link>
       <FiHome />
@@ -22,13 +21,15 @@ const NavBar = ({ logout }) => {
 
       <div className="user">
         <BsPersonCircle />
-        <span>Windu</span>
+        <span>{name}</span>
       </div>
 
-      <button className='logoutButton' onClick={logout}><FiLogOut /><span>Keluar</span></button>
-
+      <button className="logoutButton" onClick={logout}>
+        <FiLogOut />
+        <span>Keluar</span>
+      </button>
     </div>
-  )
-}
+  );
+};
 
 export default NavBar;
