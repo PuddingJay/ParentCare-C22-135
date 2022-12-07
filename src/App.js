@@ -81,7 +81,7 @@ function App() {
       children: [
         {
           path: "/",
-          element: <Home />,
+          element: <Home name={authedUser.name} />,
         },
         {
           path: "/detail/:id",

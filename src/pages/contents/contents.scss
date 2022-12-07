@@ -10,6 +10,22 @@
   }
 }
 
-.user p {
+.user p{
   padding-bottom: 20px;
+}
+
+.name{
+  padding-bottom: 5px;
+  margin-left: 1em;
+}
+
+.user__image{
+  border-radius: 50%;
+}
+
+.item__image{
+  display: flex;
+  align-items: center;
+  padding-bottom: 0.5em;
+  border-bottom: 2px solid black;
 }
