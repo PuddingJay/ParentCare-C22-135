@@ -1,5 +1,6 @@
 import React from 'react';
 import './contents.scss';
+import AddContent from '../addContent/AddContent';
 
 const Contents = () => {
   const contents = [
@@ -61,7 +62,23 @@ const Contents = () => {
     },
   ];
 
+  const [content, setContent] = React.useState(contents);
+
+  function onAddContentHandler({ name, body }) {
+    setContent((prevState) => {
+      return [
+        ...prevState.content,
+        {
+          id: +new Date(),
+          name,
+          body,
+        }
+      ]
+    })
+  }
+
   return <div className="contents">
+    <AddContent addContent={onAddContentHandler} />
     {contents.map(content => (
       <div className="content" key={content.id}>
         <div className="user">
