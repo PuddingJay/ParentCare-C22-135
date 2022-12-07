@@ -1,21 +1,15 @@
 import React from 'react';
 import './addContent.scss';
+import useInput from '../../hooks/useInput';
 
 const AddContent = ({ addContent }) => {
-  const [name, setName] = React.useState('');
-  const [body, setBody] = React.useState('');
+  const [name, onNameChangeEventHandler] = useInput('');
+  const [body, onBodyChangeEventHandler] = useInput('');
 
-  function onNameChangeEventHandler(event) {
-    setName(event.target.value);
-  }
-
-  function onBodyChangeEventHandler(event) {
-    setBody(event.target.value)
-  }
 
   function onSubmitEventHandler(event) {
     event.preventDefault();
-    addContent(name, body)
+    addContent({ name, body })
   }
 
   return (
