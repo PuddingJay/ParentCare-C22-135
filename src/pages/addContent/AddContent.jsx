@@ -3,13 +3,15 @@ import './addContent.scss';
 import useInput from '../../hooks/useInput';
 
 const AddContent = ({ addContent }) => {
-  const [name, onNameChangeEventHandler] = useInput('');
-  const [body, onBodyChangeEventHandler] = useInput('');
+  const [name, onNameChangeEventHandler, setName] = useInput('');
+  const [body, onBodyChangeEventHandler, setBody] = useInput('');
 
 
   function onSubmitEventHandler(event) {
     event.preventDefault();
     addContent({ name, body })
+    setName('');
+    setBody('');
   }
 
   return (
