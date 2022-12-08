@@ -18,12 +18,14 @@ const AddContent = ({ addContent }) => {
       <form onSubmit={onSubmitEventHandler}>
         <h2>Curahkan</h2>
         <input
+          required
           type="text"
           placeholder="Curhat Dong"
           value={title}
           onChange={onTitleChangeEventHandler}
         />
         <textarea
+          required
           type="text"
           placeholder="Sikat"
           cols="20"

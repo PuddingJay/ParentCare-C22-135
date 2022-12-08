@@ -24,7 +24,7 @@ const Login = ({ loginSuccess }) => {
       alert('Selamat Datang ☺');
       loginSuccess(data);
     } else {
-      alert('Belom daftar yak, daftar duluuu')
+      alert('Email belum terdaftar nih, daftar duluuu')
     }
   }
 
@@ -44,7 +44,7 @@ const Login = ({ loginSuccess }) => {
           <div>
             <input type="email" placeholder="Email" value={email} onChange={onEmailChange} />
             <input type="password" placeholder="Password" value={password} onChange={onPasswordChange} />
-            <button onClick={onLogin}>Masuk </button>
+            <button onClick={onLogin} >Masuk </button>
           </div>
         </div>
       </div>
