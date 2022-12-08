@@ -4,7 +4,6 @@ import { Link } from "react-router-dom";
 import { FaMoon /*, FaSun*/ } from "react-icons/fa";
 import { FiHome, FiLogOut } from "react-icons/fi";
 import { CgSearch } from "react-icons/cg";
-import { BsPersonCircle } from "react-icons/bs";
 
 const NavBar = ({ logout, name }) => {
   return (
@@ -20,7 +19,11 @@ const NavBar = ({ logout, name }) => {
       </div>
 
       <div className="user">
-        <BsPersonCircle />
+        <img
+          src={`https://ui-avatars.com/api/?name=${name === undefined ? name : name
+            }&background=random`}
+          alt="name avatar"
+        />
         <span>{name}</span>
       </div>
 

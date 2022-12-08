@@ -5,19 +5,23 @@ import NavBar from "./components/nav-bar/NavBar";
 import LeftBar from "./components/left-bar/LeftBar";
 import RightBar from "./components/right-bar/RightBar";
 import {
-  createBrowserRouter,
-  RouterProvider,
   Route,
   Outlet,
   Routes,
-  BrowserRouter,
 } from "react-router-dom";
 import Home from "./pages/home/Home";
 import Detail from "./pages/detail/Detail";
 import "./style.scss";
 import { putAccessToken, getUserLogged } from "./utils/api";
+import { useSearchParams } from 'react-router-dom';
 
 function App() {
+  const [searchParams, setSearchParams] = useSearchParams();
+  const [keyword, setKeyboard] = React.useState(() => {
+    return searchParams.get('keyword') || '';
+  })
+
+
   const [authedUser, setAuthedUser] = useState(null);
   const [initialization, setInitialization] = useState(true);
 
@@ -48,12 +52,10 @@ function App() {
 
   if (authedUser === null) {
     return (
-      <BrowserRouter>
-        <Routes>
-          <Route path="/*" element={<Login loginSuccess={onLoginSuccess} />} />
-          <Route path="/register" element={<Register />} />
-        </Routes>
-      </BrowserRouter>
+      <Routes>
+        <Route path="/*" element={<Login loginSuccess={onLoginSuccess} />} />
+        <Route path="/register" element={<Register />} />
+      </Routes>
     );
   }
 
@@ -74,34 +76,14 @@ function App() {
     );
   };
 
-  const router = createBrowserRouter([
-    {
-      path: "/",
-      element: <Layout />,
-      children: [
-        {
-          path: "/",
-          element: <Home name={authedUser.name} />,
-        },
-        {
-          path: "/detail/:id",
-          element: <Detail />,
-        },
-      ],
-    },
-    {
-      path: "/*",
-      element: <Login />,
-    },
-    {
-      path: "/register",
-      element: <Register />,
-    },
-  ]);
-
   return (
     <div>
-      <RouterProvider router={router} />
+      <Routes>
+        <Route path='/' element={<Layout />} >
+          <Route path='/' element={<Home name={authedUser.name} />} />
+          <Route path='/detail/:id' element={<Detail />} />
+        </Route>
+      </Routes>
     </div>
   );
 }
