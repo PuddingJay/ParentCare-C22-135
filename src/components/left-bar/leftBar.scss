@@ -1,33 +1,38 @@
+@import "../../style.scss";
+
 .leftBar {
-  flex: 1.5;
-  position: sticky;
-  top: 95px;
-  height: calc(100vh - 95px);
+  @include themify($themes) {
+    flex: 1.5;
+    position: sticky;
+    top: 95px;
+    height: calc(100vh - 95px);
 
-  .container {
-    padding: 20px;
-    background-color: white;
+    .container {
+      padding: 20px;
+      background-color: themed("bg");
+      color: themed("textColor");
 
 
-    .menu {
-      .category {
-        display: flex;
-        align-items: center;
-        margin-bottom: 10px;
-        padding-bottom: 10px;
-        border-bottom: 2px solid lightgrey;
-      }
-
-      .item {
-        ul {
+      .menu {
+        .category {
           display: flex;
-          flex-direction: column;
-          margin-block-start: 0;
-          padding-inline: 0;
-          gap: 20px;
+          align-items: center;
+          margin-bottom: 10px;
+          padding-bottom: 10px;
+          border-bottom: 2px solid lightgrey;
+        }
 
-          li {
-            list-style-type: none;
+        .item {
+          ul {
+            display: flex;
+            flex-direction: column;
+            margin-block-start: 0;
+            padding-inline: 0;
+            gap: 20px;
+
+            li {
+              list-style-type: none;
+            }
           }
         }
       }

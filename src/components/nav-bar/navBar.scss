@@ -1,61 +1,90 @@
+@import "../../style.scss";
+
 .navBar {
-  display: flex;
-  background-color: white;
-  justify-content: center;
-  align-items: center;
-  padding: 5px 20px;
-  box-shadow: 0 1px 5px grey;
-  position: sticky;
-  top: 0;
-  gap: 30px;
-  font-size: 20px;
-
-  .appName {
-    font-weight: bold;
-    color: rgb(123, 190, 248);
-  }
-
-  .search {
-    padding-left: 5px;
-    height: 35px;
+  @include themify($themes) {
     display: flex;
-    align-items: center;
-    gap: 10px;
-    box-shadow: 0 0 2px grey;
-
-    input {
-      width: 400px;
-      border: none;
-    }
-  }
-
-  .user {
-    margin-left: 20px;
-    display: flex;
-    align-items: center;
-
-    span {
-      margin: 0 10px;
-      font-weight: bold;
-    }
-  }
-
-  .logoutButton {
-    width: 7%;
-    display: flex;
-    align-items: center;
+    background-color: themed("bg");
+    color: themed("textColor");
+    border-bottom: 1px solid themed("border");
     justify-content: center;
-    font-size: 0.8em;
-    color: white;
-    padding: 10px;
-    background: rgb(123, 190, 248);
-    font-weight: bold;
-    border: 1px solid grey;
-    cursor: pointer;
+    align-items: center;
+    padding: 5px 20px;
+    box-shadow: 0 1px 5px grey;
+    position: sticky;
+    top: 0;
+    gap: 30px;
+    font-size: 20px;
 
-    span {
-      padding-left: 10px;
-      font-size: 15px;
+    .appName {
+      font-weight: 1000;
+      color: rgb(123, 190, 248);
+    }
+
+    .search {
+      padding-left: 5px;
+      height: 35px;
+      display: flex;
+      color: themed("textColor");
+      align-items: center;
+      gap: 10px;
+      box-shadow: 0 0 2px grey;
+
+      input {
+        width: 400px;
+        background-color: themed("bg");
+        color: themed("textColor");
+        border: none;
+      }
+
+      input:focus {
+        outline: none;
+      }
+
+      input::placeholder {
+        color: themed("textColor");
+      }
+    }
+
+    .search:focus-within {
+      box-shadow: 0 0 0 2px rgb(123, 190, 248);
+    }
+
+    .user {
+      margin-left: 20px;
+      display: flex;
+      align-items: center;
+
+      img {
+        width: 35px;
+        height: 35px;
+        object-fit: cover;
+        border-radius: 50%;
+      }
+
+      span {
+        margin: 0 10px;
+        font-weight: bold;
+        color: themed("textColor");
+      }
+    }
+
+    .logoutButton {
+      width: 7%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 0.8em;
+      color: themed("textColor");
+      padding: 10px;
+      background: themed("bg2");
+      font-weight: bold;
+      border: 1px solid grey;
+      cursor: pointer;
+
+      span {
+        padding-left: 10px;
+        font-size: 15px;
+      }
     }
   }
 }

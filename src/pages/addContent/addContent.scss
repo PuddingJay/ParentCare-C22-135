@@ -1,38 +1,48 @@
+@import "../../style.scss";
+
 .addContent {
-  margin-bottom: 20px;
-  background-color: white;
+  @include themify($themes) {
+    margin-bottom: 20px;
+    background-color: themed("bg");
+    color: themed("textColor");
 
-  form {
-    display: flex;
-    flex-direction: column;
-    padding: 20px;
-    gap: 10px;
-    box-shadow: 0 0 1px grey;
+    form {
+      display: flex;
+      flex-direction: column;
+      padding: 20px 20px 10px;
+      gap: 10px;
+      box-shadow: 0 0 1px grey;
 
-    input {
-      font-weight: lighter;
-      padding: 10px;
-    }
+      input {
+        font-weight: lighter;
+        padding: 10px;
+        background-color: themed("bg");
+        border: 1px solid themed("border2");
+      }
 
-    textarea {
-      padding: 10px;
-      font-weight: lighter;
-    }
+      textarea {
+        padding: 10px;
+        font-weight: lighter;
+        background-color: themed("bg");
+        border: 1px solid themed("border2");
+      }
 
-    button {
-      background-color: rgb(123, 190, 248);
-      color: white;
-      text-shadow: 0 0 8px black;
-      border: 1px solid black;
-      min-height: 44px;
-      min-width: 44px;
-      font-weight: bold;
-      font-size: 20px;
-    }
+      button {
+        background-color: themed("bg2");
+        color: themed("textColor");
+        border: none;
+        padding: 0 20px;
+        border-radius: 2000px;
+        min-height: 38px;
+        min-width: 100px;
+        font-weight: 700;
+        font-size: 16px;
+        margin-left: auto;
+      }
 
-    button:hover {
-      cursor: pointer;
+      button:hover {
+        cursor: pointer;
+      }
     }
   }
-
 }
