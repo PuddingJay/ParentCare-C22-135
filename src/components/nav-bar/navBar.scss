@@ -27,6 +27,14 @@
       width: 400px;
       border: none;
     }
+
+    input:focus {
+      outline: none;
+    }
+  }
+
+  .search:focus-within {
+    box-shadow: 0 0 0 2px rgb(123, 190, 248);
   }
 
   .user {

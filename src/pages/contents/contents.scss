@@ -7,25 +7,53 @@
     background-color: white;
     padding: 20px;
     box-shadow: 0 0 1px grey;
+
+    .user {
+      .user__info {
+        display: flex;
+        align-items: center;
+        padding-bottom: 0.5em;
+
+        img {
+          width: 40px;
+          height: 40px;
+          object-fit: cover;
+          border-radius: 50%;
+        }
+
+        .made {
+          display: flex;
+          flex-direction: column;
+          margin-left: 1em;
+
+          .name {
+            font-weight: 600;
+          }
+
+          .date {
+            font-size: 13px;
+          }
+        }
+      }
+    }
+
+    .user p {
+      padding-bottom: 20px;
+    }
+
+    .body__content {
+      margin-top: 5px;
+      display: flex;
+      flex-direction: column;
+
+      span:first-child {
+        font-weight: 700;
+        font-size: 16px;
+      }
+
+      span:last-child {
+        font-size: 15px;
+      }
+    }
   }
-}
-
-.user p{
-  padding-bottom: 20px;
-}
-
-.name{
-  padding-bottom: 5px;
-  margin-left: 1em;
-}
-
-.user__image{
-  border-radius: 50%;
-}
-
-.item__image{
-  display: flex;
-  align-items: center;
-  padding-bottom: 0.5em;
-  border-bottom: 2px solid black;
 }
