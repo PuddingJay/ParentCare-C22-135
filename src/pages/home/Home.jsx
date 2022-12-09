@@ -1,15 +1,19 @@
-import React from 'react';
+import React from "react";
 
-import Contents from '../contents/Contents';
-import './home.scss';
+import Contents from "../contents/Contents";
+import "./home.scss";
 
-const Home = () => {
+const Home = ({ name, filteredContent, content, setContent }) => {
   return (
     <div className="home">
-
-      <Contents />
+      <Contents
+        name={name}
+        filteredContent={filteredContent}
+        content={content}
+        setContent={setContent}
+      />
     </div>
-  )
-}
+  );
+};
 
 export default Home;

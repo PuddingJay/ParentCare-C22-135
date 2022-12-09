@@ -1,19 +1,38 @@
-import React, { useState } from 'react';
-import Login from './pages/login/Login';
-import Register from './pages/register/Register';
-import NavBar from './components/nav-bar/NavBar';
-import LeftBar from './components/left-bar/LeftBar';
-import RightBar from './components/right-bar/RightBar';
-import { createBrowserRouter, RouterProvider, Route, Outlet, Routes, BrowserRouter } from 'react-router-dom';
-import Home from './pages/home/Home';
-import Detail from './pages/detail/Detail';
-import "./style.scss"
-import { putAccessToken, getUserLogged } from './utils/api';
+import React, { useContext, useState } from "react";
+import Login from "./pages/login/Login";
+import Register from "./pages/register/Register";
+import NavBar from "./components/nav-bar/NavBar";
+import LeftBar from "./components/left-bar/LeftBar";
+import RightBar from "./components/right-bar/RightBar";
+import { Route, Outlet, Routes } from "react-router-dom";
+import Home from "./pages/home/Home";
+import Detail from "./pages/detail/Detail";
+import "./style.scss";
+import { putAccessToken, getUserLogged } from "./utils/api";
+import { useSearchParams } from "react-router-dom";
+import { DarkModeContext } from "./context/darkModeContext";
+import { getData } from "./utils/data";
 
 function App() {
+  const { darkMode } = useContext(DarkModeContext);
+  const [content, setContent] = React.useState(getData);
+
+  const [searchParams, setSearchParams] = useSearchParams();
+  const [keyword, setKeyword] = React.useState(() => {
+    return searchParams.get("keyword") || "";
+  });
 
   const [authedUser, setAuthedUser] = useState(null);
   const [initialization, setInitialization] = useState(true);
+
+  const filteredContent = content.filter((content) => {
+    return content.title.toLowerCase().includes(keyword.toLowerCase());
+  });
+
+  function onKeywordChangeHandler(keyword) {
+    setKeyword(keyword);
+    setSearchParams({ keyword });
+  }
 
   async function onLoginSuccess({ accessToken }) {
     putAccessToken(accessToken);
@@ -29,11 +48,11 @@ function App() {
       setInitialization(false);
     }
     fetchAccessToken();
-  }, [])
+  }, []);
 
   function onLogout() {
     setAuthedUser(null);
-    putAccessToken('');
+    putAccessToken("");
   }
 
   if (initialization) {
@@ -42,21 +61,24 @@ function App() {
 
   if (authedUser === null) {
     return (
-      <BrowserRouter>
-        <Routes>
-          <Route path="/*" element={<Login loginSuccess={onLoginSuccess} />} />
-          <Route path="/register" element={<Register />} />
-        </Routes>
-      </BrowserRouter>
-    )
+      <Routes>
+        <Route path="/*" element={<Login loginSuccess={onLoginSuccess} />} />
+        <Route path="/register" element={<Register />} />
+      </Routes>
+    );
   }
 
   const Layout = () => {
     return (
-      <div>
-        <NavBar logout={onLogout} />
-        <div style={{ backgroundColor: '#f1f2f2' }}>
-          <div style={{ display: 'flex', width: '1072px', margin: '0 auto' }}>
+      <div className={`theme-${darkMode ? "dark" : "light"}`}>
+        <NavBar
+          logout={onLogout}
+          name={authedUser.name}
+          keyword={keyword}
+          keywordChange={onKeywordChangeHandler}
+        />
+        <div className="background" /*style={{ backgroundColor: "#f1f2f2" }}*/>
+          <div style={{ display: "flex", width: "1072px", margin: "0 auto" }}>
             <LeftBar />
             <div style={{ flex: 5 }}>
               <Outlet />
@@ -65,42 +87,27 @@ function App() {
           </div>
         </div>
       </div>
-    )
-  }
-
-
-  const router = createBrowserRouter([
-    {
-      path: '/',
-      element: <Layout />,
-      children: [
-        {
-          path: '/',
-          element: <Home />
-        },
-        {
-          path: '/detail/:id',
-          element: <Detail />
-        },
-      ]
-
-    },
-    {
-      path: '/*',
-      element: <Login />
-    },
-    {
-      path: '/register',
-      element: <Register />
-    },
-
-  ])
-
-
+    );
+  };
 
   return (
     <div>
-      <RouterProvider router={router} />
+      <Routes>
+        <Route path="/" element={<Layout />}>
+          <Route
+            path="/"
+            element={
+              <Home
+                name={authedUser.name}
+                filteredContent={filteredContent}
+                content={content}
+                setContent={setContent}
+              />
+            }
+          />
+          <Route path="/detail/:id" element={<Detail />} />
+        </Route>
+      </Routes>
     </div>
   );
 }
