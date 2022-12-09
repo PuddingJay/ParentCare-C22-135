@@ -1,61 +1,159 @@
+@import "../../style.scss";
+
 .navBar {
-  display: flex;
-  background-color: white;
-  justify-content: center;
-  align-items: center;
-  padding: 5px 20px;
-  box-shadow: 0 1px 5px grey;
-  position: sticky;
-  top: 0;
-  gap: 30px;
-  font-size: 20px;
-
-  .appName {
-    font-weight: bold;
-    color: rgb(123, 190, 248);
-  }
-
-  .search {
-    padding-left: 5px;
-    height: 35px;
+  @include themify($themes) {
     display: flex;
+    background-color: themed("bg");
+    color: themed("textColor");
+    border-bottom: 1px solid themed("border");
+    justify-content: center;
     align-items: center;
-    gap: 10px;
-    box-shadow: 0 0 2px grey;
+    padding: 10px 180px 10px 20px;
+    box-shadow: 0 0 1px themed("bgSoft");
+    position: sticky;
+    top: 0;
+    gap: 150px;
+    font-size: 20px;
 
-    input {
-      width: 400px;
-      border: none;
+    .appName {
+      font-weight: 1000;
+      color: rgb(123, 190, 248);
     }
-  }
 
-  .user {
-    margin-left: 20px;
-    display: flex;
-    align-items: center;
+    .search {
+      padding-left: 5px;
+      height: 35px;
+      display: flex;
+      color: themed("textColor");
+      align-items: center;
+      gap: 10px;
+      box-shadow: 0 0 2px grey;
+      background-color: themed("bgSoft");
 
-    span {
-      margin: 0 10px;
-      font-weight: bold;
+      input {
+        width: 400px;
+        background-color: themed("bgSoft");
+        color: themed("textColor");
+        border: none;
+      }
+
+      input:focus {
+        outline: none;
+      }
+
+      input::placeholder {
+        color: themed("textColor");
+      }
     }
-  }
 
-  .logoutButton {
-    width: 7%;
+    .search:focus-within {
+      box-shadow: 0 0 0 2px rgb(123, 190, 248);
+    }
+
+    .user {
+      margin-left: 20px;
+      display: flex;
+      align-items: center;
+
+      img {
+        width: 35px;
+        height: 35px;
+        object-fit: cover;
+        border-radius: 50%;
+      }
+
+      span {
+        margin: 0 10px;
+        font-weight: bold;
+        color: themed("textColor");
+      }
+    }
+
+  }
+}
+
+.dropdown__menu {
+  @include themify($themes) {
     display: flex;
+    flex-direction: column;
     align-items: center;
     justify-content: center;
-    font-size: 0.8em;
-    color: white;
-    padding: 10px;
-    background: rgb(123, 190, 248);
-    font-weight: bold;
-    border: 1px solid grey;
-    cursor: pointer;
+    position: absolute;
+    z-index: 101;
+    inset: 0px auto auto 0px;
+    top: 67px;
+    background-color: themed("bg");
+    padding: 10px 20px;
+    box-shadow: 0 0 2px 2px themed("border");
+    width: 100px;
+    color: themed("textColor");
 
-    span {
-      padding-left: 10px;
-      font-size: 15px;
+    h3 {
+      width: 100%;
+      text-align: center;
+      font-size: 18px;
+      padding: 20px 0;
+      font-weight: 500;
+      font-size: 18px;
+      color: themed("textColor");
+      line-height: 1.2rem;
     }
+
+    ul {
+      padding: 10px;
+
+      li {
+        display: flex;
+        align-items: center;
+        font-size: 14px;
+        gap: 5px;
+        padding: 10px 0;
+        border-top: 1px solid themed('bgSoft');
+        list-style-type: none;
+
+        a {
+          text-decoration: none;
+          color: themed("textColor");
+        }
+      }
+
+      li:hover {
+        color: themed("textColorSoft");
+        cursor: pointer;
+      }
+    }
+
+    .dropdownItem {
+      display: flex;
+      margin: 10px auto;
+    }
+  }
+}
+
+.dropdown__menu.active {
+  opacity: 1;
+  visibility: visible;
+  transform: translate3d(1240px, 3px, 0px);
+  transition: 400ms ease;
+}
+
+.dropdown__menu.inactive {
+  opacity: 0;
+  visibility: hidden;
+  transform: translate3d(1240px, -20px, 0px);
+  transition: 400ms ease;
+}
+
+.dropdown__menu::before {
+  @include themify($themes) {
+    content: '';
+    box-shadow: -3px -2px 2px themed("border");
+    position: absolute;
+    top: -5px;
+    right: 65px;
+    height: 10px;
+    width: 10px;
+    background-color: themed("bg");
+    transform: rotate(45deg);
   }
 }

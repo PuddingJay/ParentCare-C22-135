@@ -1,15 +1,14 @@
-import React from 'react';
-import AddContent from '../addContent/AddContent';
-import Contents from '../contents/Contents';
-import './home.scss';
+import React from "react";
 
-const Home = () => {
+import Contents from "../contents/Contents";
+import "./home.scss";
+
+const Home = ({ name }) => {
   return (
     <div className="home">
-      <AddContent />
-      <Contents />
+      <Contents name={name} />
     </div>
-  )
-}
+  );
+};
 
 export default Home;
