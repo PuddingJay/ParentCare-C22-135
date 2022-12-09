@@ -1,10 +1,9 @@
 import React from "react";
 import "./contents.scss";
 import AddContent from "../addContent/AddContent";
-import { getData, showFormattedDate } from "../../utils/data";
+import { showFormattedDate } from "../../utils/data";
 
-const Contents = ({ name }) => {
-  const [content, setContent] = React.useState(getData);
+const Contents = ({ name, filteredContent, content, setContent }) => {
   console.log(name);
 
   function onAddContentHandler({ title, body }) {
@@ -14,9 +13,9 @@ const Contents = ({ name }) => {
           id: +new Date(),
           createdAt: +new Date(),
           title,
-          body,
+          body
         },
-        ...content,
+        ...content
       ];
     });
     console.log(content);
@@ -25,20 +24,23 @@ const Contents = ({ name }) => {
   return (
     <div className="contents">
       <AddContent addContent={onAddContentHandler} />
-      {content.map((content) => (
+      {filteredContent.map((content) => (
         <div className="content" key={content.id}>
           <div className="user">
             <div className="user__info">
               <img
-                src={`https://ui-avatars.com/api/?name=${content.name === undefined ? name : content.name
-                  }&background=random`}
+                src={`https://ui-avatars.com/api/?name=${
+                  content.name === undefined ? name : content.name
+                }&background=random`}
                 alt="name avatar"
               />
               <div className="made">
                 <span className="name">
                   {content.name === undefined ? name : content.name}
                 </span>
-                <span className="date">Recently added at {showFormattedDate(content.createdAt)}</span>
+                <span className="date">
+                  Recently added at {showFormattedDate(content.createdAt)}
+                </span>
               </div>
             </div>
           </div>

@@ -8,9 +8,10 @@ import { CgSearch } from "react-icons/cg";
 import { DarkModeContext } from "../../context/darkModeContext";
 import { useContext, useState } from "react";
 
-const NavBar = ({ logout, name }) => {
+const NavBar = ({ logout, name, keyword, keywordChange }) => {
   const [open, setOpen] = useState(false);
   const { toggle, darkMode } = useContext(DarkModeContext);
+  console.log("test");
   return (
     <>
       <div className="navBar">
@@ -19,18 +20,29 @@ const NavBar = ({ logout, name }) => {
         </Link>
         <div className="search">
           <CgSearch />
-          <input type="text" placeholder="Search" />
+          <input
+            type="text"
+            placeholder="Search"
+            value={keyword}
+            onChange={(event) => keywordChange(event.target.value)}
+          />
         </div>
 
-        <div className="user" onClick={() => { setOpen(!open) }}>
+        <div
+          className="user"
+          onClick={() => {
+            setOpen(!open);
+          }}
+        >
           <img
-            src={`https://ui-avatars.com/api/?name=${name === undefined ? name : name
-              }&background=random`}
+            src={`https://ui-avatars.com/api/?name=${
+              name === undefined ? name : name
+            }&background=random`}
             alt="name avatar"
           />
         </div>
       </div>
-      <div className={`dropdown__menu ${open ? 'active' : 'inactive'}`}>
+      <div className={`dropdown__menu ${open ? "active" : "inactive"}`}>
         <h3>{name}</h3>
         <ul>
           <li className="dropdown__item">
@@ -39,15 +51,14 @@ const NavBar = ({ logout, name }) => {
             </Link>
           </li>
           <li className="dropdown__item" onClick={toggle}>
-            {darkMode ? <FaMoon /> : <FaSun />} {darkMode ? 'DarkMode : on' : 'DarkMode : off'}
+            {darkMode ? <FaMoon /> : <FaSun />}{" "}
+            {darkMode ? "DarkMode : on" : "DarkMode : off"}
           </li>
           <li className="dropdown__item" onClick={logout}>
             <MdLogout /> Keluar
           </li>
         </ul>
-
       </div>
-
     </>
   );
 };
