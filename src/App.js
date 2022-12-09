@@ -65,7 +65,7 @@ function App() {
     return (
       <div className={`theme-${darkMode ? "dark" : "light"}`}>
         <NavBar logout={onLogout} name={authedUser.name} />
-        <div style={{ backgroundColor: "#f1f2f2" }}>
+        <div className='background' /*style={{ backgroundColor: "#f1f2f2" }}*/>
           <div style={{ display: "flex", width: "1072px", margin: "0 auto" }}>
             <LeftBar />
             <div style={{ flex: 5 }}>

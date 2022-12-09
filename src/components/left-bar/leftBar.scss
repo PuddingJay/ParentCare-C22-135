@@ -10,7 +10,7 @@
     .container {
       padding: 20px;
       background-color: themed("bg");
-      color: themed("textColor");
+      color: themed("textColorSoft");
 
 
       .menu {
@@ -19,7 +19,7 @@
           align-items: center;
           margin-bottom: 10px;
           padding-bottom: 10px;
-          border-bottom: 2px solid lightgrey;
+          border-bottom: 2px solid themed("border");
         }
 
         .item {

@@ -12,9 +12,11 @@
   }
 
   /* Track */
-  ::-webkit-scrollbar-track {
-    background: rgba(234, 236, 238, 0.938)
-  }
+  // ::-webkit-scrollbar-track {
+  //   @include themify ($themes) {
+  //     background: themed('border')
+  //   }
+  // }
 
   /* Handle */
   ::-webkit-scrollbar-thumb {
@@ -25,8 +27,8 @@
   p {
     @include themify($themes) {
       margin-top: 40px;
-      padding: 20px 0 20px 20px;
-      border-bottom: 2px solid lightgrey;
+      padding: 20px;
+      border-bottom: 2px solid themed("border");
       background-color: themed("bg");
       color: themed("textColor");
     }
@@ -41,7 +43,6 @@
       overflow: auto;
 
 
-
       .article__container {
         display: flex;
         flex-direction: column;
@@ -49,12 +50,11 @@
         gap: 20px;
 
         .article {
-          box-shadow: 0 0 2px 2px lightgrey;
+          background-color: themed("bgSoft");
+          box-shadow: 0 0 1.5px themed("textColorSoft");
           width: 90%;
-          // border-radius: 5px;
           overflow: hidden;
           text-decoration: none;
-          color: black;
           color: themed("textColor");
 
 

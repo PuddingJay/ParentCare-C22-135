@@ -16,7 +16,7 @@ $themes: (
   dark: (textColor: whitesmoke,
     bg: #222,
     bg2: #222,
-    bg3: white,
+    bg3: rgb(81, 145, 201),
     logo: white,
     bgSoft: #333,
     textColorSoft: lightgray,
@@ -48,4 +48,10 @@ $themes: (
 
 @function themed($key) {
   @return map-get($theme-map, $key);
+}
+
+.background {
+  @include themify($themes) {
+    background-color: themed("bgSoft");
+  }
 }

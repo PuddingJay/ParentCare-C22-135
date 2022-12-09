@@ -28,13 +28,13 @@ const Contents = ({ name }) => {
       {content.map((content) => (
         <div className="content" key={content.id}>
           <div className="user">
-            <div className="user_info">
+            <div className="user__info">
               <img
                 src={`https://ui-avatars.com/api/?name=${content.name === undefined ? name : content.name
-                }&background=random`}
+                  }&background=random`}
                 alt="name avatar"
               />
-             <div className="made">
+              <div className="made">
                 <span className="name">
                   {content.name === undefined ? name : content.name}
                 </span>
