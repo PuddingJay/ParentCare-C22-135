@@ -30,7 +30,7 @@ function App() {
     return content.title.toLowerCase().includes(keyword.toLowerCase());
   });
 
-  function onSearchEventHandler({ keyword }) {
+  function onSearchEventHandler({ keyword = "" }) {
     setKeyword(keyword);
     setSearchParams({ keyword });
   }
@@ -80,7 +80,7 @@ function App() {
         />
         <div className="background">
           <div className="outletContainer">
-            <LeftBar />
+            <LeftBar onSearch={onSearchEventHandler} />
             <div className="outletItem">
               <Outlet />
             </div>
@@ -109,10 +109,7 @@ function App() {
           />
           <Route
             path="/detail/:id"
-            element={
-              <Detail
-                name={authedUser.name}
-              />}
+            element={<Detail name={authedUser.name} />}
           />
         </Route>
       </Routes>
