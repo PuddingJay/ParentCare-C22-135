@@ -12,13 +12,14 @@ import { putAccessToken, getUserLogged } from "./utils/api";
 import { useSearchParams } from "react-router-dom";
 import { DarkModeContext } from "./context/darkModeContext";
 import { getData } from "./utils/data";
+import useInput from "./hooks/useInput";
 
 function App() {
   const { darkMode } = useContext(DarkModeContext);
   const [content, setContent] = React.useState(getData);
 
   const [searchParams, setSearchParams] = useSearchParams();
-  const [keyword, setKeyword] = React.useState(() => {
+  const [keyword, onKeywordChangeHandler, setKeyword] = useInput(() => {
     return searchParams.get("keyword") || "";
   });
 
@@ -29,7 +30,7 @@ function App() {
     return content.title.toLowerCase().includes(keyword.toLowerCase());
   });
 
-  function onKeywordChangeHandler(keyword) {
+  function onSearchEventHandler({ keyword }) {
     setKeyword(keyword);
     setSearchParams({ keyword });
   }
@@ -74,8 +75,8 @@ function App() {
         <NavBar
           logout={onLogout}
           name={authedUser.name}
-          keyword={keyword}
-          keywordChange={onKeywordChangeHandler}
+          setKeyword={setKeyword}
+          onSearch={onSearchEventHandler}
         />
         <div className="background">
           <div style={{ display: "flex", width: "1072px", margin: "0 auto" }}>
@@ -99,9 +100,10 @@ function App() {
             element={
               <Home
                 name={authedUser.name}
-                filteredContent={filteredContent}
+                keyword={keyword}
                 content={content}
                 setContent={setContent}
+                filteredContent={filteredContent}
               />
             }
           />

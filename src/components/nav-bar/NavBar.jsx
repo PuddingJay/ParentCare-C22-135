@@ -8,9 +8,16 @@ import { CgSearch } from "react-icons/cg";
 import { DarkModeContext } from "../../context/darkModeContext";
 import { useContext, useState } from "react";
 
-const NavBar = ({ logout, name, keyword, keywordChange }) => {
+const NavBar = ({ logout, name, onSearch }) => {
   const [open, setOpen] = useState(false);
   const { toggle, darkMode } = useContext(DarkModeContext);
+
+  function onSubmitHandler(event) {
+    event.preventDefault();
+    const keyword = event.target["0"].value;
+    onSearch({ keyword });
+  }
+
   return (
     <>
       <div className="navBar">
@@ -19,12 +26,10 @@ const NavBar = ({ logout, name, keyword, keywordChange }) => {
         </Link>
         <div className="search">
           <CgSearch />
-          <input
-            type="text"
-            placeholder="Search"
-            value={keyword}
-            onChange={(event) => keywordChange(event.target.value)}
-          />
+          <form onSubmit={onSubmitHandler}>
+            <input type="text" placeholder="Search" />
+            <button type="submit">Search</button>
+          </form>
         </div>
 
         <div
@@ -34,8 +39,9 @@ const NavBar = ({ logout, name, keyword, keywordChange }) => {
           }}
         >
           <img
-            src={`https://ui-avatars.com/api/?name=${name === undefined ? name : name
-              }&background=random`}
+            src={`https://ui-avatars.com/api/?name=${
+              name === undefined ? name : name
+            }&background=random`}
             alt="name avatar"
           />
         </div>

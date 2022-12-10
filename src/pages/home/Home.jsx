@@ -3,7 +3,7 @@ import React from "react";
 import Contents from "../../components/contents/Contents";
 import "./home.scss";
 
-const Home = ({ name, filteredContent, content, setContent }) => {
+const Home = ({ name, content, setContent, filteredContent }) => {
   return (
     <div className="home">
       <Contents

@@ -52,6 +52,14 @@
       input::placeholder {
         color: themed("textColor");
       }
+
+      button {
+        background-color: themed("bg3");
+        border: 0;
+        height: 35px;
+        padding-left: 10px;
+        cursor: pointer;
+      }
     }
 
     .search:focus-within {
