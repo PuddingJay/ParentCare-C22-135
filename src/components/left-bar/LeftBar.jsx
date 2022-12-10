@@ -12,7 +12,7 @@ const dataCategory = [
   "Tidak Mau Belajar"
 ];
 
-const LeftBar = () => {
+const LeftBar = ({onSearch}) => {
   function onFilterCategory(event) {
     const word = event.target.textContent.split(" ");
     let keyword;
