@@ -21,7 +21,7 @@ const NavBar = ({ logout, name, onSearch }) => {
   return (
     <>
       <div className="navBar">
-        <Link to="/" style={{ textDecoration: "none" }}>
+        <Link to="/" style={{ textDecoration: "none" }} onClick={onSearch}>
           <span className="appName">parentcare</span>
         </Link>
         <div className="search">
