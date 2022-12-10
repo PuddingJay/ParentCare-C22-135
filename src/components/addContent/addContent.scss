@@ -19,6 +19,7 @@
         background-color: themed("bgSoft");
         box-shadow: 0 0 2px grey;
         border: 1px solid themed("bgSoft");
+        color: themed("textColor");
       }
 
       input::placeholder {
@@ -44,7 +45,7 @@
         border: none;
         padding: 0 20px;
         border-radius: 2000px;
-        min-height: 38px;
+        min-height: 44px;
         min-width: 100px;
         font-weight: 700;
         font-size: 16px;

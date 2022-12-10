@@ -13,7 +13,15 @@ const Contents = ({ name, filteredContent, content, setContent }) => {
           id: +new Date(),
           createdAt: +new Date(),
           title,
-          body
+          body,
+          children: [
+            {
+              id: +new Date(),
+              name,
+              createdAt: +new Date(),
+              comment: '',
+            }
+          ],
         },
         ...content
       ];
@@ -37,7 +45,7 @@ const Contents = ({ name, filteredContent, content, setContent }) => {
                   {content.name === undefined ? name : content.name}
                 </span>
                 <span className="date">
-                  Recently added at {showFormattedDate(content.createdAt)}
+                  {showFormattedDate(content.createdAt)}
                 </span>
               </div>
             </div>

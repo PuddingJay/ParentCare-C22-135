@@ -6,6 +6,15 @@
   top: 57px;
   height: calc(100vh - 57px);
 
+  @include mobile {
+    display: none;
+  }
+
+  @include tablet {
+    flex: 2;
+  }
+
+
   /* width */
   ::-webkit-scrollbar {
     width: 5px;
@@ -59,11 +68,16 @@
 
 
           img {
+            object-fit: cover;
             height: 150px;
             width: 100%;
           }
 
           span {
+            @include tablet {
+              font-size: 14px;
+            }
+
             display: block;
             font-weight: 700;
             font-size: 18px;

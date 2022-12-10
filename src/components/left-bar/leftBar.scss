@@ -7,6 +7,14 @@
     top: 95px;
     height: calc(100vh - 95px);
 
+    @include mobile {
+      display: none;
+    }
+
+    @include tablet {
+      flex: 1;
+    }
+
     .container {
       padding: 20px;
       background-color: themed("bg");

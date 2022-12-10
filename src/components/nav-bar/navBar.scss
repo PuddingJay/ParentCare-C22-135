@@ -1,6 +1,19 @@
 @import "../../style.scss";
 
 .navBar {
+  @include mobile {
+    padding: 0 30px !important;
+    gap: 10px !important;
+    height: 60px
+  }
+
+  @include tablet {
+    padding: 0 10px !important;
+    gap: 40px !important;
+    height: 60px
+  }
+
+
   @include themify($themes) {
     display: flex;
     background-color: themed("bg");
@@ -8,14 +21,21 @@
     border-bottom: 1px solid themed("border");
     justify-content: center;
     align-items: center;
-    padding: 10px 180px 10px 20px;
+    padding: 3px 180px 5px 20px;
     box-shadow: 0 0 1px themed("bgSoft");
     position: sticky;
     top: 0;
-    gap: 150px;
+    gap: 120px;
     font-size: 20px;
 
     .appName {
+      @include mobile {
+        margin-right: 120px !important;
+      }
+
+      display: flex;
+      align-items: center;
+      min-height: 44px;
       font-weight: 1000;
       color: rgb(123, 190, 248);
       transition: all 0.4s ease-in-out;
@@ -28,6 +48,10 @@
     }
 
     .search {
+      @include mobile {
+        border-radius: 50%;
+      }
+
       padding-left: 5px;
       height: 35px;
       display: flex;
@@ -43,6 +67,18 @@
         background-color: themed("bgSoft");
         color: themed("textColor");
         border: none;
+
+        @include mobile {
+          display: none;
+        }
+
+        @include tablet {
+          width: 300px;
+        }
+
+        @include laptop-s {
+          width: 300px;
+        }
       }
 
       input:focus {
@@ -54,10 +90,16 @@
       }
 
       button {
-        background-color: themed("bg3");
-        border: 0;
+        @include mobile {
+          display: none;
+        }
+
+        background-color: themed('bg3');
+        box-shadow: 0 0 1px themed("bgSoft");
+        color: white;
+        border: none;
         height: 35px;
-        padding-left: 10px;
+        padding: 0 10px;
         cursor: pointer;
       }
     }
@@ -67,6 +109,19 @@
     }
 
     .user {
+      @include mobile {
+        margin-left: 0;
+      }
+
+      @include tablet {
+        margin-left: 80px;
+      }
+
+      @include laptop-s {
+        margin-left: auto;
+      }
+
+
       margin-left: 20px;
       display: flex;
       align-items: center;
@@ -91,8 +146,6 @@
         color: themed("textColor");
       }
     }
-
-
   }
 }
 
@@ -155,20 +208,52 @@
 }
 
 .dropdown__menu.active {
+  @include mobile {
+    transform: translate3d(173px, 3px, 0px);
+  }
+
+  @include tablet {
+    transform: translate3d(542px, 3px, 0px);
+  }
+
+  @include laptop-s {
+    transform: translate3d(728px, 3px, 0px);
+  }
+
   opacity: 1;
   visibility: visible;
   transform: translate3d(1210px, 3px, 0px);
-  transition: 400ms ease;
+  transition: 300ms ease;
 }
 
 .dropdown__menu.inactive {
+  @include mobile {
+    transform: translate3d(173px, 3px, 0px);
+  }
+
+  @include tablet {
+    transform: translate3d(542px, 3px, 0px);
+  }
+
+  @include laptop-s {
+    transform: translate3d(728px, 3px, 0px);
+  }
+
   opacity: 0;
   visibility: hidden;
   transform: translate3d(1210px, -20px, 0px);
-  transition: 400ms ease;
+  transition: 300ms ease;
 }
 
 .dropdown__menu::before {
+  @include mobile {
+    right: 15px !important;
+  }
+
+  @include tablet {
+    right: 15px !important;
+  }
+
   @include themify($themes) {
     content: '';
     box-shadow: -3px -2px 2px themed("border");

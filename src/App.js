@@ -19,7 +19,7 @@ function App() {
   const [content, setContent] = React.useState(getData);
 
   const [searchParams, setSearchParams] = useSearchParams();
-  const [keyword, onKeywordChangeHandler, setKeyword] = useInput(() => {
+  const [keyword, setKeyword] = useInput(() => {
     return searchParams.get("keyword") || "";
   });
 
@@ -79,9 +79,9 @@ function App() {
           onSearch={onSearchEventHandler}
         />
         <div className="background">
-          <div style={{ display: "flex", width: "1072px", margin: "0 auto" }}>
+          <div className="outletContainer">
             <LeftBar />
-            <div style={{ flex: 5 }}>
+            <div className="outletItem">
               <Outlet />
             </div>
             <RightBar />
@@ -107,7 +107,13 @@ function App() {
               />
             }
           />
-          <Route path="/detail/:id" element={<Detail name={authedUser.name} />} />
+          <Route
+            path="/detail/:id"
+            element={
+              <Detail
+                name={authedUser.name}
+              />}
+          />
         </Route>
       </Routes>
     </div>
