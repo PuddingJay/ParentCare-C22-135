@@ -39,9 +39,8 @@ const NavBar = ({ logout, name, onSearch }) => {
           }}
         >
           <img
-            src={`https://ui-avatars.com/api/?name=${
-              name === undefined ? name : name
-            }&background=random`}
+            src={`https://ui-avatars.com/api/?name=${name === undefined ? name : name
+              }&background=random`}
             alt="name avatar"
           />
         </div>

@@ -1,6 +1,8 @@
 @import "../../style.scss";
 
 .home {
+  min-height: 100vh;
+
   @include themify($themes) {
     margin: 40px 30px;
     background-color: themed("bgSoft");

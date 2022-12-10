@@ -19,7 +19,7 @@ function App() {
   const [content, setContent] = React.useState(getData);
 
   const [searchParams, setSearchParams] = useSearchParams();
-  const [keyword, setKeyword] = useInput(() => {
+  const [keyword, , setKeyword] = useInput(() => {
     return searchParams.get("keyword") || "";
   });
 

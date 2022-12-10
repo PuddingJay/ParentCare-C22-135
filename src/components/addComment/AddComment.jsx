@@ -1,5 +1,5 @@
 import React from 'react';
-import './addContent.scss';
+import './addComment.scss';
 import useInput from '../../hooks/useInput';
 
 const AddComment = ({ addComment }) => {
