@@ -1,0 +1,41 @@
+@import "../../style.scss";
+
+.detail {
+  @include mobile {
+    margin: 0 !important;
+  }
+
+  @include themify($themes) {
+    margin: 40px 30px;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    min-height: 100vh;
+
+    .content {
+      background-color: themed("bg");
+      padding: 20px;
+      color: themed("textColor");
+      box-shadow: 0 0 1px grey;
+
+      .body__content {
+        margin-top: 5px;
+        display: flex;
+        flex-direction: column;
+        text-decoration: none;
+        color: themed("textColor");
+
+        span:first-child {
+          font-weight: 700;
+          font-size: 21px;
+          margin-bottom: 10px;
+        }
+
+        span:last-child {
+          font-size: 15px;
+        }
+      }
+    }
+
+  }
+}

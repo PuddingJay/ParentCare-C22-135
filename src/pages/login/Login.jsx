@@ -46,6 +46,12 @@ const Login = ({ loginSuccess }) => {
             <input type="password" placeholder="Password" value={password} onChange={onPasswordChange} />
             <button onClick={onLogin} >Masuk </button>
           </div>
+          <div className="toRegister">
+            <span>Belum Memiliki Akun?</span>
+            <Link to='/register'>
+              <span>Daftar Disini</span>
+            </Link>
+          </div>
         </div>
       </div>
     </div>

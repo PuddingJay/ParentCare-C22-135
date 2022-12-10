@@ -1,46 +1,31 @@
-import React from 'react';
-import './rightBar.scss';
-import img1 from '../../asset/mtwae.jpg';
-
+import React from "react";
+import "./rightBar.scss";
+import { getDataArticle } from "../../utils/data-article";
+import artikels from "../../asset/image";
 
 const RightBar = () => {
+  const dataArticle = getDataArticle();
+
   return (
     <div className="list">
       <p>Berikut List Artikel untuk membantu</p>
       <div className="rightBar">
         <div className="article__container">
-          <a href="https://www.youtube.com/watch?v=FweHcYHkt9A" className="article">
-            <img src={img1} alt="article" />
-            <h3>Judul Artikel</h3>
-          </a>
-          <a href="https://www.youtube.com/watch?v=FweHcYHkt9A" className="article">
-            <img src={img1} alt="article" />
-            <h3>Judul Artikel</h3>
-          </a>
-          <a href="https://www.youtube.com/watch?v=FweHcYHkt9A" className="article">
-            <img src={img1} alt="article" />
-            <h3>Judul Artikel</h3>
-          </a>
-          <a href="https://www.youtube.com/watch?v=FweHcYHkt9A" className="article">
-            <img src={img1} alt="article" />
-            <h3>Judul Artikel</h3>
-          </a>
-          <a href="https://www.youtube.com/watch?v=FweHcYHkt9A" className="article">
-            <img src={img1} alt="article" />
-            <h3>Judul Artikel</h3>
-          </a>
-          <a href="https://www.youtube.com/watch?v=FweHcYHkt9A" className="article">
-            <img src={img1} alt="article" />
-            <h3>Judul Artikel</h3>
-          </a>
-          <a href="https://www.youtube.com/watch?v=FweHcYHkt9A" className="article">
-            <img src={img1} alt="article" />
-            <h3>Judul Artikel</h3>
-          </a>
+          {dataArticle.map((article, index) => (
+            <a
+              href={article.link}
+              className="article"
+              target="_blank"
+              rel="noreferrer"
+            >
+              <img src={artikels[index]} alt="article" />
+              <span>{article.article}</span>
+            </a>
+          ))}
         </div>
       </div>
     </div>
-  )
-}
+  );
+};
 
 export default RightBar;

@@ -1,6 +1,19 @@
 @import "../../style.scss";
 
 .navBar {
+  @include mobile {
+    padding: 0 30px !important;
+    gap: 10px !important;
+    height: 60px
+  }
+
+  @include tablet {
+    padding: 0 10px !important;
+    gap: 40px !important;
+    height: 60px
+  }
+
+
   @include themify($themes) {
     display: flex;
     background-color: themed("bg");
@@ -8,19 +21,37 @@
     border-bottom: 1px solid themed("border");
     justify-content: center;
     align-items: center;
-    padding: 10px 180px 10px 20px;
+    padding: 3px 180px 5px 20px;
     box-shadow: 0 0 1px themed("bgSoft");
     position: sticky;
     top: 0;
-    gap: 150px;
+    gap: 120px;
     font-size: 20px;
 
     .appName {
+      @include mobile {
+        margin-right: 120px !important;
+      }
+
+      display: flex;
+      align-items: center;
+      min-height: 44px;
       font-weight: 1000;
       color: rgb(123, 190, 248);
+      transition: all 0.4s ease-in-out;
+    }
+
+    .appName:hover {
+      font-style: italic;
+      letter-spacing: 2px;
+      text-shadow: 2px 0px 1px themed('textColor');
     }
 
     .search {
+      @include mobile {
+        border-radius: 50%;
+      }
+
       padding-left: 5px;
       height: 35px;
       display: flex;
@@ -29,12 +60,25 @@
       gap: 10px;
       box-shadow: 0 0 2px grey;
       background-color: themed("bgSoft");
+      transition: all 0.2s ease-in-out;
 
       input {
         width: 400px;
         background-color: themed("bgSoft");
         color: themed("textColor");
         border: none;
+
+        @include mobile {
+          display: none;
+        }
+
+        @include tablet {
+          width: 300px;
+        }
+
+        @include laptop-s {
+          width: 300px;
+        }
       }
 
       input:focus {
@@ -44,6 +88,26 @@
       input::placeholder {
         color: themed("textColor");
       }
+
+      button {
+        @include mobile {
+          display: none;
+        }
+
+        background-color: rgb(81, 145, 201);
+        box-shadow: 0 0 1px themed("bgSoft");
+        color: white;
+        border: none;
+        height: 35px;
+        padding: 0 10px;
+        cursor: pointer;
+        transition: all 0.2s ease-in-out;
+      }
+
+      button:hover {
+        background: rgb(122, 192, 253);
+        color: black;
+      }
     }
 
     .search:focus-within {
@@ -51,15 +115,35 @@
     }
 
     .user {
+      @include mobile {
+        margin-left: 0;
+      }
+
+      @include tablet {
+        margin-left: 80px;
+      }
+
+      @include laptop-s {
+        margin-left: auto;
+      }
+
+
       margin-left: 20px;
       display: flex;
       align-items: center;
+      cursor: pointer;
 
       img {
         width: 35px;
         height: 35px;
         object-fit: cover;
         border-radius: 50%;
+        transition: all 0.2s ease-in-out;
+      }
+
+      img:hover {
+        transform: scale(1.1);
+        box-shadow: 2px 2px 0 1px rgb(123, 190, 248);
       }
 
       span {
@@ -68,7 +152,6 @@
         color: themed("textColor");
       }
     }
-
   }
 }
 
@@ -78,14 +161,14 @@
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    position: absolute;
+    position: fixed;
     z-index: 101;
     inset: 0px auto auto 0px;
     top: 67px;
     background-color: themed("bg");
     padding: 10px 20px;
     box-shadow: 0 0 2px 2px themed("border");
-    width: 100px;
+    width: 150px;
     color: themed("textColor");
 
     h3 {
@@ -105,7 +188,7 @@
       li {
         display: flex;
         align-items: center;
-        font-size: 14px;
+        font-size: 15px;
         gap: 5px;
         padding: 10px 0;
         border-top: 1px solid themed('bgSoft');
@@ -131,26 +214,58 @@
 }
 
 .dropdown__menu.active {
+  @include mobile {
+    transform: translate3d(173px, 3px, 0px);
+  }
+
+  @include tablet {
+    transform: translate3d(542px, 3px, 0px);
+  }
+
+  @include laptop-s {
+    transform: translate3d(728px, 3px, 0px);
+  }
+
   opacity: 1;
   visibility: visible;
-  transform: translate3d(1240px, 3px, 0px);
-  transition: 400ms ease;
+  transform: translate3d(1210px, 3px, 0px);
+  transition: 300ms ease;
 }
 
 .dropdown__menu.inactive {
+  @include mobile {
+    transform: translate3d(173px, 3px, 0px);
+  }
+
+  @include tablet {
+    transform: translate3d(542px, 3px, 0px);
+  }
+
+  @include laptop-s {
+    transform: translate3d(728px, 3px, 0px);
+  }
+
   opacity: 0;
   visibility: hidden;
-  transform: translate3d(1240px, -20px, 0px);
-  transition: 400ms ease;
+  transform: translate3d(1210px, -20px, 0px);
+  transition: 300ms ease;
 }
 
 .dropdown__menu::before {
+  @include mobile {
+    right: 15px !important;
+  }
+
+  @include tablet {
+    right: 15px !important;
+  }
+
   @include themify($themes) {
     content: '';
     box-shadow: -3px -2px 2px themed("border");
     position: absolute;
     top: -5px;
-    right: 65px;
+    right: 87px;
     height: 10px;
     width: 10px;
     background-color: themed("bg");

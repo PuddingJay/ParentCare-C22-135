@@ -4,28 +4,36 @@ import Register from "./pages/register/Register";
 import NavBar from "./components/nav-bar/NavBar";
 import LeftBar from "./components/left-bar/LeftBar";
 import RightBar from "./components/right-bar/RightBar";
-import {
-  Route,
-  Outlet,
-  Routes,
-} from "react-router-dom";
+import { Route, Outlet, Routes } from "react-router-dom";
 import Home from "./pages/home/Home";
 import Detail from "./pages/detail/Detail";
 import "./style.scss";
 import { putAccessToken, getUserLogged } from "./utils/api";
-import { useSearchParams } from 'react-router-dom';
-import { DarkModeContext } from './context/darkModeContext';
+import { useSearchParams } from "react-router-dom";
+import { DarkModeContext } from "./context/darkModeContext";
+import { getData } from "./utils/data";
+import useInput from "./hooks/useInput";
 
 function App() {
   const { darkMode } = useContext(DarkModeContext);
+  const [content, setContent] = React.useState(getData);
 
   const [searchParams, setSearchParams] = useSearchParams();
-  const [keyword, setKeyboard] = React.useState(() => {
-    return searchParams.get('keyword') || '';
-  })
+  const [keyword, , setKeyword] = useInput(() => {
+    return searchParams.get("keyword") || "";
+  });
 
   const [authedUser, setAuthedUser] = useState(null);
   const [initialization, setInitialization] = useState(true);
+
+  const filteredContent = content.filter((content) => {
+    return content.title.toLowerCase().includes(keyword.toLowerCase());
+  });
+
+  function onSearchEventHandler({ keyword = "" }) {
+    setKeyword(keyword);
+    setSearchParams({ keyword });
+  }
 
   async function onLoginSuccess({ accessToken }) {
     putAccessToken(accessToken);
@@ -64,11 +72,16 @@ function App() {
   const Layout = () => {
     return (
       <div className={`theme-${darkMode ? "dark" : "light"}`}>
-        <NavBar logout={onLogout} name={authedUser.name} />
-        <div className='background' /*style={{ backgroundColor: "#f1f2f2" }}*/>
-          <div style={{ display: "flex", width: "1072px", margin: "0 auto" }}>
-            <LeftBar />
-            <div style={{ flex: 5 }}>
+        <NavBar
+          logout={onLogout}
+          name={authedUser.name}
+          setKeyword={setKeyword}
+          onSearch={onSearchEventHandler}
+        />
+        <div className="background">
+          <div className="outletContainer">
+            <LeftBar onSearch={onSearchEventHandler} />
+            <div className="outletItem">
               <Outlet />
             </div>
             <RightBar />
@@ -81,9 +94,23 @@ function App() {
   return (
     <div>
       <Routes>
-        <Route path='/' element={<Layout />} >
-          <Route path='/' element={<Home name={authedUser.name} />} />
-          <Route path='/detail/:id' element={<Detail />} />
+        <Route path="/" element={<Layout />}>
+          <Route
+            path="/"
+            element={
+              <Home
+                name={authedUser.name}
+                keyword={keyword}
+                content={content}
+                setContent={setContent}
+                filteredContent={filteredContent}
+              />
+            }
+          />
+          <Route
+            path="/detail/:id"
+            element={<Detail name={authedUser.name} />}
+          />
         </Route>
       </Routes>
     </div>

@@ -1,11 +1,10 @@
 import React from "react";
-import "./contents.scss";
+import './contents.scss';
 import AddContent from "../addContent/AddContent";
-import { getData, showFormattedDate } from "../../utils/data";
+import { showFormattedDate } from "../../utils/data";
+import { Link } from "react-router-dom";
 
-const Contents = ({ name }) => {
-  const [content, setContent] = React.useState(getData);
-  console.log(name);
+const Contents = ({ name, filteredContent, content, setContent }) => {
 
   function onAddContentHandler({ title, body }) {
     setContent(() => {
@@ -15,17 +14,24 @@ const Contents = ({ name }) => {
           createdAt: +new Date(),
           title,
           body,
+          children: [
+            {
+              id: +new Date(),
+              name,
+              createdAt: +new Date(),
+              comment: '',
+            }
+          ],
         },
-        ...content,
+        ...content
       ];
     });
-    console.log(content);
   }
 
   return (
     <div className="contents">
       <AddContent addContent={onAddContentHandler} />
-      {content.map((content) => (
+      {filteredContent.map((content) => (
         <div className="content" key={content.id}>
           <div className="user">
             <div className="user__info">
@@ -38,13 +44,17 @@ const Contents = ({ name }) => {
                 <span className="name">
                   {content.name === undefined ? name : content.name}
                 </span>
-                <span className="date">Recently added at {showFormattedDate(content.createdAt)}</span>
+                <span className="date">
+                  {showFormattedDate(content.createdAt)}
+                </span>
               </div>
             </div>
           </div>
           <div className="body__content">
-            <span>{content.title}</span>
-            <span>{content.body}</span>
+            <Link to={`/detail/${content.id}`}>
+              <span>{content.title}</span>
+              <span>{content.body}</span>
+            </Link>
           </div>
         </div>
       ))}

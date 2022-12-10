@@ -54,6 +54,12 @@ const Register = () => {
             <input type="password" placeholder="Confirm Password" value={verifPassword} onChange={onVerifPasswordChange} />
             <button onClick={onRegister}>Daftar </button>
           </div>
+          <div className="toRegister">
+            <span>Sudah Memiliki Akun?</span>
+            <Link to='/login'>
+              <span>Masuk Disini</span>
+            </Link>
+          </div>
         </div>
       </div>
     </div>

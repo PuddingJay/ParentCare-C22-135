@@ -1,4 +1,7 @@
+@import "../../style.scss";
+
 .login {
+
   height: 100vh;
   background-color: rgb(123, 190, 248);
   display: flex;
@@ -6,6 +9,18 @@
   align-items: center;
 
   .card {
+    @include mobile {
+      width: 90%;
+    }
+
+    @include tablet {
+      width: 90%;
+    }
+
+    @include laptop-s {
+      width: 70%;
+    }
+
     display: flex;
     width: 45%;
     background-color: white;
@@ -14,8 +29,13 @@
     overflow: hidden;
 
     .left {
+      @include mobile {
+        display: none;
+      }
+
       flex: 1;
-      background: linear-gradient(rgb(102, 170, 197, 0.6), rgba(0, 0, 0, 0.5)), url('../../../public/image/pexels-photo-1166990.webp') center;
+      background: linear-gradient(rgb(102, 170, 197, 0.6), rgba(0, 0, 0, 0.5)),
+      url('../../../public/image/pexels-photo-1166990.webp') center;
       background-size: cover;
       padding: 40px;
       display: flex;
@@ -38,6 +58,8 @@
       }
 
       button {
+        min-height: 44px;
+        font-size: 16px;
         width: 36%;
         padding: 10px;
         border: none;
@@ -50,6 +72,10 @@
     }
 
     .right {
+      @include mobile {
+        padding: 35px;
+      }
+
       display: flex;
       flex: 1;
       padding: 50px;
@@ -78,6 +104,30 @@
           background-color: rgb(123, 190, 248);
           color: white;
           font-weight: bold;
+        }
+
+      }
+
+      .toRegister {
+        @include mobile {
+          visibility: visible;
+        }
+
+        visibility: hidden;
+        margin-top: 10px;
+        gap: 0;
+
+        span:first-child {
+          font-weight: 700;
+          font-size: 14px;
+        }
+
+        a span:last-child {
+          display: block;
+          min-height: 44px;
+          font-weight: 500;
+          color: black;
+          font-size: 12px;
         }
       }
 
