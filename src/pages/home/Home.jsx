@@ -1,6 +1,6 @@
 import React from "react";
 
-import Contents from "../contents/Contents";
+import Contents from "../../components/contents/Contents";
 import "./home.scss";
 
 const Home = ({ name, filteredContent, content, setContent }) => {

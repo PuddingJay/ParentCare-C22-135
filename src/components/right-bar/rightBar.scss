@@ -3,8 +3,8 @@
 .list {
   flex: 2.5;
   position: sticky;
-  top: 53px;
-  height: calc(100vh - 53px);
+  top: 57px;
+  height: calc(100vh - 57px);
 
   /* width */
   ::-webkit-scrollbar {
@@ -52,7 +52,7 @@
         .article {
           background-color: themed("bgSoft");
           box-shadow: 0 0 1.5px themed("textColorSoft");
-          width: 90%;
+          margin: 0 20px;
           overflow: hidden;
           text-decoration: none;
           color: themed("textColor");
@@ -63,9 +63,11 @@
             width: 100%;
           }
 
-          h3 {
-            height: 80px;
-            padding: 10px 20px
+          span {
+            display: block;
+            font-weight: 700;
+            font-size: 18px;
+            padding: 10px;
           }
         }
       }

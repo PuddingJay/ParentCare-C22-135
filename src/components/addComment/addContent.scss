@@ -1,0 +1,47 @@
+@import "../../style.scss";
+
+.addComment {
+  @include themify($themes) {
+    margin-bottom: 20px;
+    background-color: themed("bg");
+    color: themed("textColor");
+
+    form {
+      display: flex;
+      flex-direction: column;
+      padding: 20px 20px 10px;
+      gap: 10px;
+      box-shadow: 0 0 1px grey;
+
+      textarea {
+        padding: 10px;
+        font-weight: lighter;
+        background-color: themed("bgSoft");
+        color: themed("textColor");
+        border: 1px solid themed("bgSoft");
+        box-shadow: 0 0 2px grey;
+      }
+
+      textarea::placeholder {
+        color: themed("textColor");
+      }
+
+      button {
+        background-color: themed("bg3");
+        color: white;
+        border: none;
+        padding: 0 20px;
+        border-radius: 2000px;
+        min-height: 38px;
+        min-width: 100px;
+        font-weight: 700;
+        font-size: 16px;
+        margin-left: auto;
+      }
+
+      button:hover {
+        cursor: pointer;
+      }
+    }
+  }
+}

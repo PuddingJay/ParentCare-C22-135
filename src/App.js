@@ -77,7 +77,7 @@ function App() {
           keyword={keyword}
           keywordChange={onKeywordChangeHandler}
         />
-        <div className="background" /*style={{ backgroundColor: "#f1f2f2" }}*/>
+        <div className="background">
           <div style={{ display: "flex", width: "1072px", margin: "0 auto" }}>
             <LeftBar />
             <div style={{ flex: 5 }}>
@@ -105,7 +105,7 @@ function App() {
               />
             }
           />
-          <Route path="/detail/:id" element={<Detail />} />
+          <Route path="/detail/:id" element={<Detail name={authedUser.name} />} />
         </Route>
       </Routes>
     </div>

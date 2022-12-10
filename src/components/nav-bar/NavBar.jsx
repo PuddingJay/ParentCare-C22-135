@@ -11,7 +11,6 @@ import { useContext, useState } from "react";
 const NavBar = ({ logout, name, keyword, keywordChange }) => {
   const [open, setOpen] = useState(false);
   const { toggle, darkMode } = useContext(DarkModeContext);
-  console.log("test");
   return (
     <>
       <div className="navBar">
@@ -35,9 +34,8 @@ const NavBar = ({ logout, name, keyword, keywordChange }) => {
           }}
         >
           <img
-            src={`https://ui-avatars.com/api/?name=${
-              name === undefined ? name : name
-            }&background=random`}
+            src={`https://ui-avatars.com/api/?name=${name === undefined ? name : name
+              }&background=random`}
             alt="name avatar"
           />
         </div>
@@ -52,7 +50,7 @@ const NavBar = ({ logout, name, keyword, keywordChange }) => {
           </li>
           <li className="dropdown__item" onClick={toggle}>
             {darkMode ? <FaMoon /> : <FaSun />}{" "}
-            {darkMode ? "DarkMode : on" : "DarkMode : off"}
+            {darkMode ? "DarkMode : ON" : "DarkMode : OFF"}
           </li>
           <li className="dropdown__item" onClick={logout}>
             <MdLogout /> Keluar

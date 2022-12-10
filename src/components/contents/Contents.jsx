@@ -1,10 +1,10 @@
 import React from "react";
-import "./contents.scss";
+import './contents.scss';
 import AddContent from "../addContent/AddContent";
 import { showFormattedDate } from "../../utils/data";
+import { Link } from "react-router-dom";
 
 const Contents = ({ name, filteredContent, content, setContent }) => {
-  console.log(name);
 
   function onAddContentHandler({ title, body }) {
     setContent(() => {
@@ -18,7 +18,6 @@ const Contents = ({ name, filteredContent, content, setContent }) => {
         ...content
       ];
     });
-    console.log(content);
   }
 
   return (
@@ -29,9 +28,8 @@ const Contents = ({ name, filteredContent, content, setContent }) => {
           <div className="user">
             <div className="user__info">
               <img
-                src={`https://ui-avatars.com/api/?name=${
-                  content.name === undefined ? name : content.name
-                }&background=random`}
+                src={`https://ui-avatars.com/api/?name=${content.name === undefined ? name : content.name
+                  }&background=random`}
                 alt="name avatar"
               />
               <div className="made">
@@ -45,8 +43,10 @@ const Contents = ({ name, filteredContent, content, setContent }) => {
             </div>
           </div>
           <div className="body__content">
-            <span>{content.title}</span>
-            <span>{content.body}</span>
+            <Link to={`/detail/${content.id}`}>
+              <span>{content.title}</span>
+              <span>{content.body}</span>
+            </Link>
           </div>
         </div>
       ))}
