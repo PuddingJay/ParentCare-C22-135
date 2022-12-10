@@ -47,8 +47,7 @@ const getDataArticle = () => {
     },
     {
       id: 10,
-      article:
-        'Orang Tua Tak Perlu Khawatir, Kini Ada Cara Mengatasi Anak yang Suka Mencuri',
+      article: 'Orang Tua Tak Perlu Khawatir, Kini Ada Cara Mengatasi Anak yang Suka Mencuri',
       link: 'https://www.wartabromo.com/2021/03/16/orang-tua-tak-perlu-khawatir-kini-ada-cara-mengatasi-anak-yang-suka-mencuri/',
     },
   ];
