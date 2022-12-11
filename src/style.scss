@@ -81,7 +81,13 @@ $themes: (
 }
 
 @mixin laptop-xl {
-  @media (max-width: 2560px) and (min-width: 1500px) {
+  @media (max-width: 1920px) and (min-width: 1500px) {
+    @content;
+  }
+}
+
+@mixin laptop-xxl {
+  @media (max-width: 2560px) and (min-width: 2000px) {
     @content;
   }
 }

@@ -235,6 +235,10 @@
   }
 
   @include laptop-xl {
+    transform: translate3d(1217px, 3px, 0px);
+  }
+
+  @include laptop-xxl {
     transform: translate3d(1541px, 3px, 0px);
   }
 
@@ -266,6 +270,10 @@
   }
 
   @include laptop-xl {
+    transform: translate3d(1217px, 3px, 0px);
+  }
+
+  @include laptop-xxl {
     transform: translate3d(1541px, 3px, 0px);
   }
 
