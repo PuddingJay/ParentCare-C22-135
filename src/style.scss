@@ -80,6 +80,12 @@ $themes: (
   }
 }
 
+@mixin laptop-xl {
+  @media (max-width: 2560px) and (min-width: 1500px) {
+    @content;
+  }
+}
+
 .background {
   @include themify($themes) {
     background-color: themed("bgSoft");
