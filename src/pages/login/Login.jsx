@@ -33,7 +33,7 @@ const Login = ({ loginSuccess }) => {
       <div className="card">
         <div className="left">
           <h1>Selamat Datang</h1>
-          <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Provident perferendis cupiditate maiores mollitia quidem delectus exercitationem minus rerum, molestiae, dolores, impedit deserunt sed distinctio. Dolores inventore ullam animi dignissimos at.</p>
+          <p>Forum yang membantu para orang tua terkait masalah yang mereka hadapi dalam mendidik anak mereka , di aplikasi ini juga para orang tua dapat berdiskusi ataupun bertukar cerita dan memberikan solusi terhadap permasalahan yang sedang dihadapi. Di website ini juga ada artikel-artikel yang dapat dibaca oleh orang tua untuk mengedukasi orang tua dalam menentukan pola asuh yang terbaik untuk anak.</p>
           <span>Belum Memiliki Akun?</span>
           <Link to='/register'>
             <button>Daftar Disini</button>
