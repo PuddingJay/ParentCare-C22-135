@@ -44,7 +44,9 @@ const Login = ({ loginSuccess }) => {
           <div>
             <input type="email" placeholder="Email" value={email} onChange={onEmailChange} />
             <input type="password" placeholder="Password" value={password} onChange={onPasswordChange} />
-            <button onClick={onLogin} >Masuk </button>
+            <Link to='/'>
+              <button onClick={onLogin} >Masuk </button>
+            </Link>
           </div>
           <div className="toRegister">
             <span>Belum Memiliki Akun?</span>
