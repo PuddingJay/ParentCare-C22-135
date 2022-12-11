@@ -219,11 +219,19 @@
   }
 
   @include tablet {
-    transform: translate3d(542px, 3px, 0px);
+    transform: translate3d(573px, 3px, 0px);
   }
 
   @include laptop-s {
     transform: translate3d(728px, 3px, 0px);
+  }
+
+  @include laptop-m {
+    transform: translate3d(880px, 3px, 0px);
+  }
+
+  @include laptop-l {
+    transform: translate3d(980px, 3px, 0px);
   }
 
   opacity: 1;
@@ -238,11 +246,19 @@
   }
 
   @include tablet {
-    transform: translate3d(542px, 3px, 0px);
+    transform: translate3d(573px, 3px, 0px);
   }
 
   @include laptop-s {
     transform: translate3d(728px, 3px, 0px);
+  }
+
+  @include laptop-m {
+    transform: translate3d(880px, 3px, 0px);
+  }
+
+  @include laptop-l {
+    transform: translate3d(980px, 3px, 0px);
   }
 
   opacity: 0;
@@ -258,6 +274,10 @@
 
   @include tablet {
     right: 15px !important;
+  }
+
+  @include laptop-s {
+    right: 9px !important;
   }
 
   @include themify($themes) {
