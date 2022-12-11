@@ -9,6 +9,7 @@ import artikel8 from "../asset/artikel-8.jpg";
 import artikel9 from "../asset/artikel-9.jpg";
 import artikel10 from "../asset/artikel-10.jpg";
 
+// eslint-disable-next-line import/no-anonymous-default-export
 export default [
   artikel1,
   artikel2,
