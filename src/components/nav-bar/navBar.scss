@@ -234,6 +234,10 @@
     transform: translate3d(980px, 3px, 0px);
   }
 
+  @include laptop-xl {
+    transform: translate3d(1541px, 3px, 0px);
+  }
+
   opacity: 1;
   visibility: visible;
   transform: translate3d(1210px, 3px, 0px);
@@ -261,6 +265,12 @@
     transform: translate3d(980px, 3px, 0px);
   }
 
+  @include laptop-xl {
+    transform: translate3d(1541px, 3px, 0px);
+  }
+
+
+
   opacity: 0;
   visibility: hidden;
   transform: translate3d(1210px, -20px, 0px);
@@ -274,10 +284,6 @@
 
   @include tablet {
     right: 15px !important;
-  }
-
-  @include laptop-s {
-    right: 9px !important;
   }
 
   @include themify($themes) {
